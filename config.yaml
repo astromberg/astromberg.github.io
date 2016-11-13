@@ -1,0 +1,8 @@
+contentdir: "content"
+layoutdir: "layouts"
+publishdir: "public"
+indexes:
+  category: "categories"
+baseurl: "https://astromberg.github.io/"
+title: "Stromberg Labs"
+canonifyurls: true
