@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>NBA In Game Win Probability</title>
+<meta name="description" content="A little website to host my projects">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/owl.carousel.css">
+<link rel="stylesheet" href="/css/owl.theme.css">
+
+
+  <link href="/css/style.green.css" rel="stylesheet" id="theme-stylesheet">
+
+
+<link href="/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">Stromberg Labs</a></h1>
+    <p class="sidebar-p"></p>
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/about/">About</a></li>
+      
+    </ul>
+
+    <div class="copyright">
+      <p class="credit">
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+<br/> Ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+<br/> Modified a bunch after that :)
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">Stromberg Labs</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>NBA In Game Win Probability</h1>
+         <p>Bear with me for a second. I&rsquo;ve get pretty stressed out when watching the Denver Broncos play. Part of my routine involves finding the in game win probability chart so that I know when I should just walk away from the game (good or bad). I also always have trouble finding these charts online, a couple of these sites like Advanced NFL Stats have slowly stopped or broken down over the years. So I figure I should make one myself!</p>
+
+<p>This is right around the time that the Warriors were on their run for a second title with Steph Curry, so I thought I would start with basketball first. It seems a lot more straightforward because there are a lot more scoring events and the data was much much easier to get my hands on, thanks to Michael Beuoy for pointing me in the right spot.</p>
+
+<p>My first approach is to look back at previous situations and find out how likely you were to win in that situation. The &ldquo;situation&rdquo; was defined by what the difference in score was and the time remaining (aligned to 10 second bins). This produced results which seemed pretty good. Someday I&rsquo;ll ressurect them and see if I can make some charts.</p>
+
+<p>The second approach was to use a Logit GLM to fit a variety of data. I included home vs away, score differential, whether or not you currently possess the ball, and percentage of the game which had been completed. After my wife showed me that I should use the logit and how to convert that set of constants into a formula that produces a probability, we got this:</p>
+
+<p>$$y = e^{-(0.2775 - 0.4483 \cdot A + 0.3208 \cdot T \cdot S + 0.2894 \cdot P)}$$
+$$Probability = 1 / (1 + y)$$</p>
+
+<p>A = 1 if you are the away team, 0 if you are the home team.<br />
+T = Percentage of time remaining, from 0 to 1.<br />
+S = Score differential, your team&rsquo;s score - the other team.<br />
+P = 1 if you possess the ball, 0 if you don&rsquo;t possess the ball.</p>
+
+<p>I also tried some variations where ignore possession and produced some nice 3D plots.</p>
+
+<p><img src="/img/igwip.gif" alt="Example image" /></p>
+
+<p>In future iterations I hope to wire up a website that will produce these charts on demand, for past games or games which are currently being played. Some improvements I&rsquo;d like to make eventually are:</p>
+
+<ol>
+<li>Overtime - Right now I don&rsquo;t include any overtime states in the model.</li>
+<li>End Game - The model doesn&rsquo;t take into account that if you have possession, are leading, and there is &lt; $SHOT_CLOCK_TIME remaining, then you&rsquo;ve basically won. The model underestimates your chances of winning in these scenarios.</li>
+<li>On demand charts for past games and currently active games.</li>
+</ol>
+
+<p>I&rsquo;m also going to eventually take a crack at doing this for the NFL.</p>
+
+<p>The preview image for this post can be found <a href="https://unsplash.com/photos/zjEsQhDD39I">here</a>.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"> </script>
+<script src="/js/jquery.cookie.js"> </script>
+<script src="/js/ekko-lightbox.js"></script>
+<script src="/js/jquery.scrollTo.min.js"></script>
+<script src="/js/masonry.pkgd.min.js"></script>
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+<script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/front.js"></script>
+
+</body>
+</html>
