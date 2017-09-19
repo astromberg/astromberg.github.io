@@ -6,8 +6,119 @@
     <description>Recent content on Stromberg Labs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Nov 2016 18:25:22 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 19 Sep 2017 01:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>DIY Water Table</title>
+      <link>/portfolio/water_table/</link>
+      <pubDate>Tue, 19 Sep 2017 01:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/water_table/</guid>
+      <description>
+
+&lt;p&gt;My daughter loves to play with water, but gets more of a kick out of running water, so I went looking for a water table with a pump. I wasn&amp;rsquo;t able to find much, only ones with manual pumps which seemed out of her reach at that age, so I tried making my own.&lt;/p&gt;
+
+&lt;h3 id=&#34;finished-product&#34;&gt;Finished Product&lt;/h3&gt;
+
+&lt;p&gt;&lt;img class=&#34;img-responsive center-block&#34; src=&#34;/img/water_table.gif&#34; alt=&#34;&#34; style=&#34;max-width: 300px;&#34;/&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;ingredients&#34;&gt;Ingredients&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/img/water_table_bottom.JPG&#34;&gt;A plastic bin to hold the water and the pump&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/img/water_table_top.JPG&#34;&gt;Same size bin, half the height for the top&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/img/water_table_pump.JPG&#34;&gt;A fountain pump&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Some &lt;sup&gt;3&lt;/sup&gt;&amp;frasl;&lt;sub&gt;4&lt;/sub&gt;&amp;rdquo; PVC tubing&lt;/li&gt;
+&lt;li&gt;A threaded connector for the pump to the PVC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;assembly&#34;&gt;Assembly&lt;/h3&gt;
+
+&lt;p&gt;The assembly is pretty straightforward&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Cut a hole in the bottom bin, just wide enough for the pump plug to run through it, just below the lowest point of the top tray.&lt;/li&gt;
+&lt;li&gt;Cut a hole in the top tray where you want the PVC to come up through. Don&amp;rsquo;t worry about making this exact, since you&amp;rsquo;ll want some water to flow back down, but start small.&lt;/li&gt;
+&lt;li&gt;Get creative with the PVC tubing, drill some holes, add some connectors, but don&amp;rsquo;t glue it together, since you&amp;rsquo;ll want to be able to take it apart. When it&amp;rsquo;s dry fitted it still holds together well.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You&amp;rsquo;ll have to adjust the size of the whole in the top tray so that it keeps some water, but doesn&amp;rsquo;t pump out the bottom entirely. I was surprised that this only took us a couple of hours to build and didn&amp;rsquo;t see anything like this on the internet yet.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>NFL In Game Win Probability</title>
+      <link>/portfolio/igwip_nfl/</link>
+      <pubDate>Tue, 19 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/igwip_nfl/</guid>
+      <description>
+
+&lt;p&gt;I did the NBA in game win probability, but I really wanted to do one for the NFL,
+so here we are. This is all based on the great explanations at &lt;a href=&#34;https://www.pro-football-reference.com/about/win_prob.htm&#34;&gt;Pro Football Reference&lt;/a&gt;, with some
+more intermediate graphics and steps that helped me understand it better.&lt;/p&gt;
+
+&lt;h3 id=&#34;in-game-probability&#34;&gt;In Game Probability&lt;/h3&gt;
+
+&lt;p&gt;The first thing I wanted to do was to recreate the win probability laid out
+that the score is a normal random variable, centered around the current point
+differential. The sigma of the curve decreases linearly as the game progresses,
+so the curve gets more pointy until the very end of the game, where there is
+only a single outcome.&lt;/p&gt;
+
+&lt;p&gt;&lt;select id=&#34;game-picker&#34;&gt;
+  &lt;option value=&#34;1&#34;&gt;WAS vs CIN, 10/30/2016 (Tie Game)&lt;/option&gt;
+  &lt;option value=&#34;0&#34;&gt;MIN vs CLE, 9/13/2009 (Just a Game)&lt;/option&gt;
+  &lt;option value=&#34;2&#34;&gt;BAL vs MIN, 12/8/2013 (Wild Last Two Minutes)&lt;/option&gt;
+  &lt;option value=&#34;3&#34;&gt;DET vs PHI, 12/8/2013 (Snow Bowl!)&lt;/option&gt;
+&lt;/select&gt;&lt;/p&gt;
+
+&lt;div&gt;
+  &lt;canvas id=&#34;chart&#34;&gt;&lt;/canvas&gt;
+  &lt;div style=&#34;color: #999999;&#34;&gt;
+    &lt;div style=&#34;margin-top: 10px;&#34;&gt;
+      &lt;div class=&#34;col-md-6 text-center&#34;&gt;&lt;span id=&#34;game-time&#34;&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;col-md-6 text-center&#34;&gt;Lead: &lt;span id=&#34;lead&#34;&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class=&#34;col-md-4 text-center&#34;&gt;Win: &lt;span id=&#34;percent-win&#34;&gt;&lt;/span&gt;%&lt;/div&gt;
+      &lt;div class=&#34;col-md-4 text-center&#34;&gt;Tie: &lt;span id=&#34;percent-tie&#34;&gt;&lt;/span&gt;%&lt;/div&gt;
+      &lt;div class=&#34;col-md-4 text-center&#34;&gt;Loss: &lt;span id=&#34;percent-loss&#34;&gt;&lt;/span&gt;%&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;input id=&#34;slider&#34; type=&#34;range&#34;/&gt;
+  &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js&#34;&gt;&lt;/script&gt;
+  &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/decimal.js/7.2.4/decimal.min.js&#34;&gt;&lt;/script&gt;
+  &lt;script src=&#34;/js/igwip_nfl.js&#34;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;div style=&#34;margin-bottom: 20px;&#34;&gt;&lt;/div&gt;
+
+&lt;p&gt;Pretty fun, right? The data for this comes from nflscrapR author &lt;a href=&#34;https://www.kaggle.com/maxhorowitz/nflplaybyplay2009to2016&#34;&gt;Max Horowitz&amp;rsquo;s Kaggle page&lt;/a&gt;. Without his
+work, I don&amp;rsquo;t believe there would be any good free data on the NFL.&lt;/p&gt;
+
+&lt;h2 id=&#34;including-expected-points&#34;&gt;Including Expected Points&lt;/h2&gt;
+
+&lt;p&gt;The previous win probabilities don&amp;rsquo;t take into account the current state of
+players on the field. If you are up by two, but the opposing team is at your 30
+yard line with 10 seconds left, they&amp;rsquo;ll probably kick a field goal and go home.
+Right now this model doesn&amp;rsquo;t account for this, but we can if we included the
+expected number of points for their current drive.&lt;/p&gt;
+
+&lt;p&gt;I hope to get to this eventually ;)&lt;/p&gt;
+
+&lt;h2 id=&#34;additional-reading&#34;&gt;Additional Reading&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.pro-football-reference.com/about/win_prob.htm&#34;&gt;PFR In Game Win Probability&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/maxhorowitz/nflplaybyplay2009to2016&#34;&gt;NFL Play by Play Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.footballperspective.com/quarter-by-quarter-team-win-probability-added/&#34;&gt;Quarter By Quarter Probability&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cmusportsanalytics.com/nfl-expected-points-nflscrapr-part-2-multinomial-logistic-regression/&#34;&gt;CMU Expected Points Model&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The image for this post can be found &lt;a href=&#34;https://unsplash.com/search/photos/american-football?photo=iezcEpGuYdE&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Halloween Candy Survey</title>
@@ -61,7 +172,9 @@ It might have something to do with it&amp;rsquo;s relative rarity of non chocola
       <pubDate>Sat, 05 Nov 2016 18:25:22 +0530</pubDate>
       
       <guid>/portfolio/igwip/</guid>
-      <description>&lt;p&gt;Bear with me for a second. I&amp;rsquo;ve get pretty stressed out when watching the Denver Broncos play. Part of my routine involves finding the in game win probability chart so that I know when I should just walk away from the game (good or bad). I also always have trouble finding these charts online, a couple of these sites like Advanced NFL Stats have slowly stopped or broken down over the years. So I figure I should make one myself!&lt;/p&gt;
+      <description>&lt;script src=&#34;//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;Bear with me for a second. I&amp;rsquo;ve get pretty stressed out when watching the Denver Broncos play. Part of my routine involves finding the in game win probability chart so that I know when I should just walk away from the game (good or bad). I also always have trouble finding these charts online, a couple of these sites like Advanced NFL Stats have slowly stopped or broken down over the years. So I figure I should make one myself!&lt;/p&gt;
 
 &lt;p&gt;This is right around the time that the Warriors were on their run for a second title with Steph Curry, so I thought I would start with basketball first. It seems a lot more straightforward because there are a lot more scoring events and the data was much much easier to get my hands on, thanks to Michael Beuoy for pointing me in the right spot.&lt;/p&gt;
 
